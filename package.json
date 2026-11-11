@@ -1,0 +1,84 @@
+{
+  "name": "urworkflow",
+  "displayName": "UR_workflow",
+  "description": "An Extension for Coding Beginners",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.141.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:workflowSidebar",
+    "onCommand:urworkfolw.openWorkflowDetails",
+    "onCommand:urworkfolw.systemCheck",
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "urworkfolw.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "urworkfolw.openWorkflowDetails",
+        "title": "UR Workflow: Open Workflow Details"
+      },
+      {
+        "command": "urworkfolw.openWelcome",
+        "title": "UR Workflow: 打开欢迎页"
+      },
+      {
+        "command": "urworkfolw.systemCheck",
+        "title": "UR Workflow: 系统环境检查"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "workflowContainer",
+          "title": "UR Workflow",
+          "icon": "media/workflow.svg"
+        }
+      ]
+    },
+    "views": {
+      "workflowContainer": [
+        {
+          "id": "workflowSidebar",
+          "name": "Workflow"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.145.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "ts-loader": "^9.6.2",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}

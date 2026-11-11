@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+  <link rel="stylesheet" href="{{stylesUri}}">
+  <title>工作流定制</title>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div class="eyebrow">UR WORKFLOW <span class="divider">/</span> DETAILS</div>
+      <h1>工作流定制</h1>
+      <p>配置工作流的名称、触发方式和执行步骤。</p>
+    </header>
+
+    <form id="workflow-form">
+      <section class="card">
+        <div class="card-heading"><span class="number">01</span><div><h2>基本信息</h2><p>为这条工作流设置一个清晰的名称。</p></div></div>
+        <label for="workflow-name">工作流名称</label>
+        <input id="workflow-name" name="name" type="text" maxlength="80" required placeholder="例如：每日代码回顾">
+        <label for="workflow-trigger">触发方式</label>
+        <select id="workflow-trigger" name="trigger">
+          <option value="manual">手动触发</option>
+          <option value="onSave">保存文件时</option>
+          <option value="onOpen">打开工作区时</option>
+        </select>
+      </section>
+
+      <section class="card">
+        <div class="card-heading"><span class="number">02</span><div><h2>执行步骤</h2><p>按顺序描述工作流需要完成的内容。</p></div></div>
+        <label for="workflow-steps">步骤列表 <span class="hint">每行一个步骤</span></label>
+        <textarea id="workflow-steps" name="steps" rows="6" maxlength="3000" placeholder="检查当前改动
+运行相关检查
+整理结果摘要"></textarea>
+      </section>
+
+      <section class="card">
+        <div class="card-heading"><span class="number">03</span><div><h2>补充说明</h2><p>记录执行时需要遵守的细节。</p></div></div>
+        <label for="workflow-notes">备注 <span class="hint">可选</span></label>
+        <textarea id="workflow-notes" name="notes" rows="4" maxlength="2000" placeholder="添加上下文或特殊要求"></textarea>
+      </section>
+
+      <footer class="actions">
+        <span id="save-status" role="status" aria-live="polite">与扩展已连接</span>
+        <button type="submit"><span>保存配置</span><span aria-hidden="true">→</span></button>
+      </footer>
+    </form>
+  </main>
+  <script nonce="{{nonce}}" src="{{scriptUri}}"></script>
+</body>
+</html>

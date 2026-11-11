@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+  <link rel="stylesheet" href="{{stylesUri}}">
+  <title>UR Workflow</title>
+</head>
+<body>
+  <main class="panel">
+    <header class="hero">
+      <div class="eyebrow"><span class="status-dot"></span> WORKSPACE</div>
+      <h1>UR Workflow</h1>
+      <p class="subtitle">把想法整理成下一步行动。</p>
+    </header>
+
+    <section class="dependency-card" aria-labelledby="dependencies-title">
+      <div class="dependency-heading">
+        <div><p class="eyebrow">PROJECT SETUP</p><h2 id="dependencies-title">项目依赖</h2></div>
+        <span class="dependency-indicator" aria-hidden="true"></span>
+      </div>
+      <p id="dependency-status" role="status" aria-live="polite">正在检查工作区依赖…</p>
+      <progress id="dependency-progress" max="100" aria-label="依赖安装进度" hidden></progress>
+      <button class="primary-button" id="install-dependencies" type="button" disabled>一键检测/安装依赖</button>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR FLOW</p>
+          <h2 id="steps-title">工作流</h2>
+        </div>
+        <span class="count" id="step-count">03</span>
+      </div>
+      <ol class="steps">
+        <li class="step is-done">
+          <span class="step-marker" aria-hidden="true">✓</span>
+          <div><strong>明确目标</strong><span>整理要解决的问题</span></div>
+          <span class="step-state">完成</span>
+        </li>
+        <li class="step is-current">
+          <span class="step-marker" aria-hidden="true">02</span>
+          <div><strong>拆解任务</strong><span>把目标变成可执行步骤</span></div>
+          <span class="step-state">进行中</span>
+        </li>
+        <li class="step">
+          <span class="step-marker" aria-hidden="true">03</span>
+          <div><strong>开始行动</strong><span>逐项推进并记录结果</span></div>
+          <span class="step-state">待开始</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="tip" aria-label="提示">
+      <span class="tip-icon" aria-hidden="true">✳</span>
+      <div><strong>保持轻量</strong><p>先完成一个小步骤，再继续下一步。</p></div>
+    </section>
+
+    <button class="primary-button" id="next-step" type="button">
+      <span>继续当前步骤</span><span aria-hidden="true">→</span>
+    </button>
+    <button class="secondary-button" id="open-welcome" type="button">在编辑区打开详细欢迎页</button>
+    <p class="footnote">专注当下，稳步推进。</p>
+  </main>
+  <script nonce="{{nonce}}" src="{{scriptUri}}"></script>
+</body>
+</html>
